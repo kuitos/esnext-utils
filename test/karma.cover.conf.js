@@ -20,8 +20,6 @@ module.exports = function(config) {
 	});
 
 	opts.singleRun = true;
-	opts.files.unshift('../node_modules/proxy-polyfill/proxy.js');
-
 	opts.webpack.module.postLoaders = [
 		{
 			test: /\.js$/,
