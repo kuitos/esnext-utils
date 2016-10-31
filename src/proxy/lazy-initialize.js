@@ -4,17 +4,32 @@
  * @since 2016-10-31
  */
 
-export default function lazyInitialize(target, lazyInitialization) {
+const initialize = (origin, lazyInitialization) => {
 
 	let initialized = false;
+	let initializedTarget = null;
 
-	return new Proxy(target, {
-		get(target, property) {
-
-			const result = initialized ? target[property] : lazyInitialization(target, property);
+	const initialization = target => {
+		if (!initialized) {
+			initializedTarget = lazyInitialization(target);
 			initialized = true;
-			return result;
 		}
-	});
+	};
 
+	const get = (target, property) => {
+		initialization(target);
+		return initializedTarget[property];
+	};
+
+	const apply = (target, thisArg, argumentsList) => {
+		initialization(target);
+		return initializedTarget.apply(thisArg, argumentsList);
+	};
+
+	return typeof origin === 'function' ? {get, apply} : {get};
+
+};
+
+export default function lazyInitialize(target, lazyInitialization) {
+	return new Proxy(target, initialize(target, lazyInitialization));
 }

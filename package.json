@@ -1,6 +1,6 @@
 {
   "name": "esnext-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "js utils written by es next",
   "scripts": {
     "build": "rm -fr lib && NODE_ENV=production babel src --out-dir lib --ignore **/__tests__ && cp package.json lib/package.json && cp README.md lib/README.md",
