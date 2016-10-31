@@ -9,7 +9,7 @@ var base = require('./karma.base.conf');
 module.exports = function(config) {
 
 	var opts = Object.assign(base, {
-		browsers: ['Chrome'],
+		browsers: ['Firefox'],
 		reporters: ['progress', 'coverage'],
 		coverageReporter: {
 			reporters: [
@@ -27,17 +27,6 @@ module.exports = function(config) {
 			loader: 'istanbul-instrumenter'
 		}
 	];
-
-	opts.customLaunchers = {
-		Chrome_travis_ci: {
-			base: 'Chrome',
-			flags: ['--no-sandbox']
-		}
-	};
-
-	if (process.env.TRAVIS) {
-		opts.browsers = ['Chrome_travis_ci'];
-	}
 
 	config.set(opts);
 };
