@@ -5,7 +5,7 @@
  */
 
 import lazyInitialize from '../lazy-initialize';
-import sinon from 'sinon';
+import { spy } from 'sinon';
 import { assert } from 'chai';
 
 describe('lazy initialize', () => {
@@ -18,13 +18,13 @@ describe('lazy initialize', () => {
 				name: 'kuitos',
 				age: 20
 			};
-			const spy = sinon.spy();
-			const actuallyFn = lazyInitialize(object, target => {
-				spy(target);
+			const spyFn = spy();
+			const actuallyFn = lazyInitialize(object, (target: any) => {
+				spyFn(target);
 				return target;
 			});
 
-			assert.isFalse(spy.called);
+			assert.isFalse(spyFn.called);
 
 			const name = actuallyFn.name;
 			assert.equal(name, object.name);
@@ -32,8 +32,8 @@ describe('lazy initialize', () => {
 			const age = actuallyFn.age;
 			assert.equal(age, object.age);
 
-			assert.isTrue(spy.calledOnce);
-			assert.isTrue(spy.calledWith(object));
+			assert.isTrue(spyFn.calledOnce);
+			assert.isTrue(spyFn.calledWith(object));
 		});
 
 		it('when function called', () => {

@@ -41,23 +41,20 @@ module.exports = {
 		output: {
 			pathinfo: true
 		},
-		eslint: {
-			configFile: '.eslintrc',
-			emitWarning: true,
-			emitError: true,
-			formatter: require('eslint-friendly-formatter')
+		resolve: {
+			extensions: ['', '.ts', '.js']
 		},
 		module: {
 			preLoaders: [{
-				test: /\.js$/,
-				loader: 'eslint-loader',
+				test: /\.ts$/,
+				loader: 'tslint-loader',
 				exclude: /node_modules/,
 				include: [path.join(__dirname, '../src')]
 			}],
 			loaders: [
 				{
-					test: /\.js$/,
-					loaders: ['babel'],
+					test: /\.ts$/,
+					loader: 'ts-loader',
 					exclude: /(node_modules|bower_components)/,
 					include: [path.join(__dirname, '../src'), path.join(__dirname, '../test')]
 				}

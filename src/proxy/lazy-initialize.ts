@@ -4,10 +4,10 @@
  * @since 2016-10-31
  */
 
-const initialize = (origin, lazyInitialization) => {
+const initialize = <T>(origin: T, lazyInitialization: Function): ProxyHandler<T> => {
 
-	let initialized = false;
-	let initializedTarget = null;
+	let initialized: boolean = false;
+	let initializedTarget: any = null;
 
 	const initialization = target => {
 		if (!initialized) {
@@ -16,20 +16,19 @@ const initialize = (origin, lazyInitialization) => {
 		}
 	};
 
-	const get = (target, property) => {
+	const get = (target, property: string): any => {
 		initialization(target);
 		return initializedTarget[property];
 	};
 
-	const apply = (target, thisArg, argumentsList) => {
+	const apply = (target, thisArg, argumentsList: Array<any>) => {
 		initialization(target);
 		return initializedTarget.apply(thisArg, argumentsList);
 	};
 
 	return typeof origin === 'function' ? {get, apply} : {get};
-
 };
 
-export default function lazyInitialize(target, lazyInitialization) {
+export default function lazyInitialize<T>(target: T, lazyInitialization: Function): T {
 	return new Proxy(target, initialize(target, lazyInitialization));
 }

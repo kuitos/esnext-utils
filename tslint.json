@@ -1,0 +1,14 @@
+{
+  "extends": "tslint:latest",
+  "rules": {
+	"indent": [
+	  true,
+	  "tabs"
+	],
+	"quotemark": [
+	  true,
+	  "single"
+	]
+  },
+  "rulesDirectory": []
+}

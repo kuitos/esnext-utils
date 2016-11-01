@@ -1,10 +1,10 @@
 {
   "name": "esnext-utils",
-  "version": "0.0.2",
-  "description": "js utils written by es next",
+  "version": "1.0.0",
+  "description": "js utils for es next, written by typescript",
   "scripts": {
-    "build": "rm -fr lib && NODE_ENV=production babel src --out-dir lib --ignore **/__tests__ && cp package.json lib/package.json && cp README.md lib/README.md",
-    "codecheck": "NODE_EVN=test eslint src",
+    "build": "rm -fr lib && tsc",
+    "codecheck": "tslint src/**/*.ts",
     "prepush": "npm test",
     "test": "npm run codecheck & npm run cover",
     "unit": "karma start ./test/karma.unit.conf.js --single-run",
@@ -15,6 +15,9 @@
   "author": "Kuitos<kuitos.lau@gmail.com>",
   "homepage": "https://github.com/kuitos/esnext-utils",
   "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/mocha": "^2.2.32",
+    "@types/sinon": "^1.16.31",
     "babel-cli": "^6.7.7",
     "babel-core": "^6.7.4",
     "babel-eslint": "^6.0.4",
@@ -38,7 +41,11 @@
     "karma-mocha-reporter": "^2.0.2",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.4.5",
-    "sinon": "^2.0.0-pre",
+    "sinon": "^2.0.0-pre.3",
+    "ts-loader": "^0.9.5",
+    "tslint": "^3.15.1",
+    "tslint-loader": "^2.1.5",
+    "typescript": "^2.0.6",
     "webpack": "^1.13.0"
   }
 }
