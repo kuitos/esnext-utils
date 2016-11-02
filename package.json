@@ -25,7 +25,6 @@
     "@types/sinon": "^1.16.31",
     "chai": "^3.5.0",
     "codecov": "^1.0.1",
-    "eslint": "^2.10.2",
     "husky": "^0.10.1",
     "istanbul-instrumenter-loader": "^0.2.0",
     "karma": "^0.13.22",
