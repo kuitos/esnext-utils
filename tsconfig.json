@@ -6,6 +6,8 @@
 	"diagnostics": true,
 	"pretty": true,
 	"experimentalDecorators": true,
+	"noImplicitAny": true,
+	"noImplicitReturns": true,
 	"rootDir": "src",
 	"outDir": "lib",
 	"newLine": "LF",

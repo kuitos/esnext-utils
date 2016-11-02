@@ -9,19 +9,19 @@ const initialize = <T>(origin: T, lazyInitialization: Function): ProxyHandler<T>
 	let initialized: boolean = false;
 	let initializedTarget: any = null;
 
-	const initialization = target => {
+	const initialization = (target: any) => {
 		if (!initialized) {
 			initializedTarget = lazyInitialization(target);
 			initialized = true;
 		}
 	};
 
-	const get = (target, property: string): any => {
+	const get = (target: any, property: string): any => {
 		initialization(target);
 		return initializedTarget[property];
 	};
 
-	const apply = (target, thisArg, argumentsList: Array<any>) => {
+	const apply = (target: any, thisArg: any, argumentsList: Array<any>) => {
 		initialization(target);
 		return initializedTarget.apply(thisArg, argumentsList);
 	};
