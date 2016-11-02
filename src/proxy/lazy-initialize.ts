@@ -21,7 +21,7 @@ const initialize = <T>(origin: T, lazyInitialization: Function): ProxyHandler<T>
 		return initializedTarget[property];
 	};
 
-	const apply = (target: Function, thisArg: any, argumentsList: ArrayLike<any>): any => {
+	const apply = (target: T, thisArg: any, argumentsList: any[]): any => {
 		initialization(target);
 		return initializedTarget.apply(thisArg, argumentsList);
 	};

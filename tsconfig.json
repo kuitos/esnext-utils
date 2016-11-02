@@ -4,6 +4,7 @@
 	"module": "commonjs",
 	"declaration": true,
 	"diagnostics": true,
+	"noEmitOnError": true,
 	"pretty": true,
 	"experimentalDecorators": true,
 	"noImplicitAny": true,
