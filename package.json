@@ -2,6 +2,11 @@
   "name": "esnext-utils",
   "version": "1.0.0",
   "description": "js utils for es next, written by typescript",
+  "keywords": [
+    "esnext",
+    "utils",
+    "typescript"
+  ],
   "scripts": {
     "build": "rm -fr lib && tsc && cp package.json lib/package.json && cp README.md lib/README.md",
     "codecheck": "tslint src/**/*.ts",
