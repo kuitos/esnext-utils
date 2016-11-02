@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "js utils for es next, written by typescript",
   "scripts": {
-    "build": "rm -fr lib && tsc",
+    "build": "rm -fr lib && tsc && cp package.json lib/package.json && cp README.md lib/README.md",
     "codecheck": "tslint src/**/*.ts",
     "prepush": "npm test",
     "test": "npm run codecheck & npm run cover",
