@@ -9,7 +9,7 @@ const initialize = <T>(origin: T, lazyInitialization: Function): ProxyHandler<T>
 	let initialized: boolean = false;
 	let initializedTarget: any = null;
 
-	const initialization = <T>(target: T): void => {
+	const initialization = (target: T): void => {
 		if (!initialized) {
 			initializedTarget = lazyInitialization(target);
 			initialized = true;
