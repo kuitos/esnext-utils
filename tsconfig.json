@@ -4,7 +4,7 @@
 	"module": "commonjs",
 	"declaration": true,
 	"diagnostics": true,
-	"noEmitOnError": true,
+	"allowSyntheticDefaultImports": true,
 	"pretty": true,
 	"experimentalDecorators": true,
 	"noImplicitAny": true,
@@ -16,10 +16,20 @@
 	"skipDefaultLibCheck": true,
 	"skipLibCheck": true,
 	"strictNullChecks": true,
-	"lib": ["es2015"],
+	"moduleResolution": "node",
+	"preserveConstEnums": true,
+	"sourceMap": true,
+	"lib": [
+	  "es6",
+	  "dom"
+	],
 	"typeRoots": [
 	  "node_modules/@types"
 	]
+  },
+  "formatCodeOptions": {
+	"indentSize": 2,
+	"tabSize": 2
   },
   "include": [
 	"src/**/*"
